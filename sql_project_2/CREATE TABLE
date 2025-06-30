@@ -1,0 +1,41 @@
+-- TABLE
+
+SELECT * 
+FROM socialmediausage;
+
+-- connect postgresql and create database
+
+CREATE DATABASE sql_project_2;
+
+-- refresh pgAdmin go on new connection and connect the database
+-- slide .csv in the folder
+-- create table with chatgpt by pasting first line of dataset
+
+CREATE TABLE SocialMediaUsage (
+    Student_ID INT PRIMARY KEY,
+    Age INT,
+    Gender VARCHAR(10),
+    Academic_Level VARCHAR(20),
+    Country VARCHAR(50),
+    Avg_Daily_Usage_Hours DECIMAL(3,1),
+    Most_Used_Platform VARCHAR(20),
+    Affects_Academic_Performance VARCHAR(3),
+    Sleep_Hours_Per_Night DECIMAL(3,1),
+    Mental_Health_Score INT,
+    Relationship_Status VARCHAR(20),
+    Conflicts_Over_Social_Media INT,
+    Addicted_Score INT
+);
+
+-- copy dataset with folder path
+
+COPY SocialMediaUsage
+FROM 'C:\Users\Degan\Documents\Data\Students Social Media Addiction.csv'
+WITH (FORMAT csv, HEADER true, DELIMITER ',', ENCODING 'UTF8');
+
+-- if permission denied, copy this (in one line!!) on pgAdmin PSQLTool
+
+\copy SocialMediaUsage FROM 'C:\Users\Degan\Documents\Data\Students Social Media Addiction.csv' DELIMITER ',' CSV HEADER;
+
+-- table is created with data
+
